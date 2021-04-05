@@ -1,24 +1,39 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import Main from './components/Main'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Github from 'github-api';
 import './App.css';
 
+// const gh = new Github({
+//   // username: process.env.REACT_APP_USERNAME,
+//   // password: process.env.REACT_APP_PASSWORD
+// });
+
+
 function App() {
+  // const [count, setCount] = useState(0);
+
+  // useEffect(() => {
+    
+  //   var me = gh.getUser('joshhouston')
+  //   me.listGists(function(err, repos) {
+  //     console.log(repos)
+  //   })
+  // }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route path='/'>
+          <Main />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
