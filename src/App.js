@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Main from './components/Main'
+import Main from './components/Main';
+import User from './components/User';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -16,7 +18,8 @@ import './App.css';
 
 
 function App() {
-  // const [count, setCount] = useState(0);
+  
+  const [username, setUsername] = useState('Default');
 
   // useEffect(() => {
     
@@ -29,8 +32,11 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path='/'>
-          <Main />
+        <Route path="/user">
+          <User username={username} />
+        </Route>
+        <Route path="/">
+          <Main setUsername={setUsername} />
         </Route>
       </Switch>
     </Router>

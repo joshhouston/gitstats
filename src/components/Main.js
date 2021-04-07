@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router';
 
-function Main() {
+function Main({setUsername}) {
 
-    const [userState, setUserState] = useState(undefined)
     const [name, setName] = useState("")
 
-    useEffect(() => {
-        setUserState({ user: user })
-        console.log(userState)
-    }, [])
-
-    let user;
-
+    let history = useHistory();
+    
     const handleUser = event => {
         event.preventDefault();
-        alert(`Submitting Name ${name}`)
+        alert(`Submitting Name ${name}`);
+        setUsername(name)
+        history.push("/user")
     };
-    console.log(handleUser)
+    
+    console.log(setUsername)
     return (
         <div>
             <h3>search user</h3>
