@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 
 function Main({setUsername}) {
@@ -9,12 +9,10 @@ function Main({setUsername}) {
     
     const handleUser = event => {
         event.preventDefault();
-        alert(`Submitting Name ${name}`);
         setUsername(name)
         history.push("/user")
     };
     
-    console.log(setUsername)
     return (
         <div>
             <h3>search user</h3>
