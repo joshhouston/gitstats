@@ -1,11 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 
-function Charts() {
+function Charts({repos}) {
 
+    console.log(repos)
     return (
         <div>
-            Charts go here ok
+            {repos.map((repo, index) => (
+
+                <div key={index}>
+                    {repo.name}
+                </div>
+            ))}
         </div>
     )
 }

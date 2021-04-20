@@ -5,9 +5,9 @@ import Github from 'github-api';
 
 const gh = new Github();
 
-function User({ username }) {
+function User({ username, setRepos }) {
     const [isLoading, setLoading] = useState(true)
-    const [repo, setRepo] = useState([])
+    // const [repo, setRepo] = useState([])
     const [profile, setProfile] = useState({})
     const [date, setDate] = useState('')
 
@@ -15,14 +15,15 @@ function User({ username }) {
 
 
     useEffect(() => {
+
         async function fetchData() {
-            const result = await user.listStarredRepos()
-            setRepo([...result.data])
+            const result = await user.listRepos()
+            setRepos([...result.data])
+            
         }
 
         async function getProfile() {
             const result = await user.getProfile()
-            console.log(result.data)
             let date = format(parseISO(result.data.created_at), "MMMM d, yyyy")
 
             setDate(date)
@@ -33,7 +34,7 @@ function User({ username }) {
         fetchData();
         getProfile();
 
-
+        
 
     }, [])
 

@@ -22,8 +22,11 @@ function App() {
     <Router>
       <Switch>
         <Route path="/user">
-          <User username={username} />
-          <Charts />
+          <User 
+            username={username}
+            setRepos={setRepos}
+             />
+          <Charts repos={repos} />
         </Route>
         <Route path="/">
           <Main setUsername={setUsername} />
