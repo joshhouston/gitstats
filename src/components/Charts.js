@@ -46,11 +46,7 @@ function Charts({repos}) {
             }
         })
         
-    console.log(repos)
-    // repos.map(repo => language.push(repo.language))
-
-    // repos.forEach((lang, i) => console.log(i) )
-    // console.log(language)
+    
     return (
         <div>
             <Doughnut

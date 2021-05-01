@@ -10,7 +10,7 @@ function Main({setUsername}) {
     const handleUser = event => {
         event.preventDefault();
         setUsername(name)
-        history.push("/user")
+        history.push(`/user/${name}`)
     };
     
     return (

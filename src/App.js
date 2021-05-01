@@ -21,7 +21,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/user">
+        <Route path="/user/:name">
           <User 
             username={username}
             setRepos={setRepos}
