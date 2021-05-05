@@ -4,7 +4,7 @@ import { Doughnut, Pie, Bar } from 'react-chartjs-2';
 
 function Charts({ repos }) {
 
-    //Language Pie Chart Data
+    //Top Language Pie Chart Data
 
     let pieData = {
         labels: [],
@@ -50,13 +50,13 @@ function Charts({ repos }) {
 
     //Most Starred Bar Chart
     const starred = repos.sort((a, b) => b.stargazers_count - a.stargazers_count);
-    
+
     let barData = {
-        labels: starred.map(i => i.name).slice(0,5),
+        labels: starred.map(i => i.name).slice(0, 5),
         responsive: true,
         maintainAspectRatio: false,
         datasets: [{
-            data: starred.map(i => i.stargazers_count).slice(0,5),
+            data: starred.map(i => i.stargazers_count).slice(0, 5),
             backgroundColor: [
                 '#61DAFB',
                 '#DD1B16',
@@ -78,15 +78,65 @@ function Charts({ repos }) {
             }
         }]
     }
-    
+
+    //Stars per Language Doughnut Chart
+    const languages = [];
+
+    repos
+        .filter(i => i.language)
+        .forEach(repo => {
+            const idx = languages.findIndex(i => i.lang === repo.language);
+            if (idx !== -1) {
+                languages[idx].stars += repo.stargazers_count;
+            } else {
+                languages.push({
+                    lang: repo.language,
+                    stars: repo.stargazers_count,
+                    color: repo.languageColor
+                });
+            }
+        });
+
+    const sorted = languages.sort((a, b) => b.stars - a.stars);
+
+    let doughnutData = {
+        labels: sorted.map(i => i.lang),
+        responsive: true,
+        maintainAspectRatio: false,
+        datasets: [{
+            data: sorted.map(i => i.stars),
+            backgroundColor: [
+                '#61DAFB',
+                '#DD1B16',
+                '#41B883'
+            ],
+            borderColor: [
+                '#61DAFB',
+                '#DD1B16',
+                '#41B883'
+            ],
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        }]
+    }
 
 
-        
-    
-    return(
+
+
+
+
+    return (
         <div className='charts'>
-        <Pie data={pieData} />
-        <Bar data={barData} />
+            <Pie data={pieData} />
+            <Bar data={barData} />
+            <Doughnut data={doughnutData} />
         </div >
     )
 }
