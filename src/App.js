@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Main from './components/Main';
 import User from './components/User';
 import Charts from './components/Charts';
+import Recent from './components/Recent';
 import './App.css';
 
 import {
@@ -27,6 +28,7 @@ function App() {
             setRepos={setRepos}
              />
           <Charts repos={repos} />
+          <Recent repos={repos} />
         </Route>
         <Route path="/">
           <Main setUsername={setUsername} />

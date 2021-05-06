@@ -134,9 +134,22 @@ function Charts({ repos }) {
 
     return (
         <div className='charts'>
-            <Pie data={pieData} />
-            <Bar data={barData} />
-            <Doughnut data={doughnutData} />
+            <Pie 
+            options={{
+                responsive: true,
+                maintainAspectRatio: true
+            }}
+             data={pieData} />
+            <Bar 
+            options={{
+                responsive: true,
+                maintainAspectRatio: true
+            }} data={barData} />
+            <Doughnut 
+            options={{
+                responsive: true,
+                maintainAspectRatio: true
+            }} data={doughnutData} />
         </div >
     )
 }
