@@ -8,8 +8,6 @@ function Charts({ repos }) {
 
     let pieData = {
         labels: [],
-        responsive: true,
-        maintainAspectRatio: false,
         datasets: [{
             data: [],
             backgroundColor: [
@@ -53,8 +51,6 @@ function Charts({ repos }) {
 
     let barData = {
         labels: starred.map(i => i.name).slice(0, 5),
-        responsive: true,
-        maintainAspectRatio: false,
         datasets: [{
             data: starred.map(i => i.stargazers_count).slice(0, 5),
             backgroundColor: [
@@ -101,8 +97,6 @@ function Charts({ repos }) {
 
     let doughnutData = {
         labels: sorted.map(i => i.lang),
-        responsive: true,
-        maintainAspectRatio: false,
         datasets: [{
             data: sorted.map(i => i.stars),
             backgroundColor: [
